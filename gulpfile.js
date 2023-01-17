@@ -15,6 +15,7 @@ const respImages = () => {
 				'**/*.jpg': [{
 					width: "10%",
 					blur: 1.2,
+					quality: 50,
 					rename: {
 						suffix: '-ph'
 					},
@@ -34,6 +35,7 @@ const respImages = () => {
 				'**/*.png': [{
 					width: "10%",
 					blur: 1.2,
+					quality: 50,
 					rename: {
 						suffix: '-ph'
 					},
