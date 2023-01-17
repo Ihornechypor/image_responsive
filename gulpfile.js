@@ -44,11 +44,11 @@ const respImages = () => {
 					rename: {
 						suffix: '@2x'
 					},
-					format: ['webp', 'jpg']
+					format: ['webp', 'png']
 				}, {
 					width: "50%",
 					quality: 75,
-					format: ['webp', 'jpg']
+					format: ['webp', 'png']
 				}]
 			}, {
 				errorOnEnlargement: false,
