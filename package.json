@@ -4,15 +4,14 @@
   "description": "",
   "main": "gulp.js",
   "scripts": {
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-responsive": "^3.0.1"
-  },
-  "devDependencies": {
-    "gulp": "^4.0.2"
   }
 }
