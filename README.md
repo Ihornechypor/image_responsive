@@ -1,6 +1,6 @@
 # requestments node.js >= 14.15.0
 # gulp-cli instaled globaly 
-# in case of some problems with node-gyp use `npm install --global --production windows-build-tools@4.0.0` in administrative mode in powershell 
+# in case of some problems with node-gyp use `npm install --global --production windows-build-tools` in administrative mode in powershell 
 # 
 # 
 # how to use 
