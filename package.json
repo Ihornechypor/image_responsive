@@ -4,15 +4,17 @@
   "description": "",
   "main": "gulp.mjs",
   "scripts": {
-    "start": "gulp",
-    "watch": "gulp watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp watch",
+    "build": "gulp build"
   },
   "author": "",
-  "license": "ISC", 
+  "license": "ISC",
   "dependencies": {
     "del": "^7.0.0",
     "gulp": "^4.0.2",
     "gulp-sharp-responsive": "^0.4.0"
+  },
+  "devDependencies": {
+    "yargs": "^17.6.2"
   }
 }

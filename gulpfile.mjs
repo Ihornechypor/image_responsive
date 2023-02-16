@@ -7,9 +7,7 @@ const {
     watch
 } = gulp;
 
-
 import {config} from './config/config.mjs';
-
 import sharpResponsive from "gulp-sharp-responsive";
 import {deleteAsync} from 'del';
 
@@ -54,21 +52,20 @@ const configArray = [
         width: (metadata) => convertToInt(metadata.width, 0.5),
         pngOptions: config.pngOptions,
         jpegOptions: config.jpegOptions
-    }
+    } 
 ]
 
 const img = () => src(config.srcFiles).pipe(sharpResponsive({formats: configArray})).pipe(dest(config.dist));
 
-const testSome = (done) => {
-    console.log(1)
-    done();
-}
 
-task('default', series(delDist, img));
+const watcher = watch(config.srcFiles);
 
-task('watch', function () {
-    watch('src/**/*.*', series(testSome)).on('change', (e, file) => {
-        console.log(e)
-        console.log(file)
-    });
+watcher.on('add', function (path) {
+    src(path).pipe(sharpResponsive({formats: configArray})).pipe(dest(config.dist))
+    console.log(1);
 });
+
+process.argv.slice(2)[0] === "build" && watcher.close();
+
+task('watch', series(img));
+task('build', series(delDist, img));
