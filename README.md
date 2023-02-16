@@ -4,5 +4,5 @@
 # how to use 
 # install project `npm i`
 # put x2 scaled image(recomended) in `src folder`
-# write on terminal `npm run start`
+# write on terminal `npm start`
 # get compiled images in dest folder
