@@ -17,14 +17,14 @@ const delDist = (done) => {
 const img = () => src(config.srcFiles)
   .pipe(sharpResponsive({
     formats: [ 
-      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }, webpOptions: config.webpOptions},
+      { width: (metadata) => Math.trunc(metadata.width * 0.05) ? Math.trunc(metadata.width * 0.05) : 1, format: "webp", rename: { suffix: "-ph" }, webpOptions: config.webpOptions},
       { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }, webpOptions: config.webpOptions},
       { width: (metadata) => metadata.width, rename: { suffix: "@2x" }, pngOptions: config.pngOptions, jpegOptions: config.jpegOptions},
-      { width: (metadata) => metadata.width * 0.5, format: "webp",webpOptions: config.webpOptions},
-      { width: (metadata) => metadata.width * 0.5, pngOptions: config.pngOptions, jpegOptions: config.jpegOptions}
+      { width: (metadata) => Math.trunc(metadata.width * 0.5) ? Math.trunc(metadata.width * 0.5) : 1, format: "webp",webpOptions: config.webpOptions},
+      { width: (metadata) => Math.trunc( metadata.width * 0.5) ? Math.trunc(metadata.width * 0.5) : 1, pngOptions: config.pngOptions, jpegOptions: config.jpegOptions}
     ]
   }))
-  .pipe(dest(config.dist));
+  .pipe(dest(config.dist)); 
 
 
 task('default', series(delDist, img));
