@@ -13,8 +13,5 @@
     "del": "^7.0.0",
     "gulp": "^4.0.2",
     "gulp-sharp-responsive": "^0.4.0"
-  },
-  "devDependencies": {
-    "yargs": "^17.6.2"
   }
 }
