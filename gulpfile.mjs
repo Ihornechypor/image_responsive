@@ -13,36 +13,18 @@ const delDist = (done) => {
     done();
 }
 
-const someTask = () => {
-    return src(config.srcFiles)
-    .pipe(dest(config.dist))
-} 
 
-
-
-const imgJpg = () => src(config.srcJpgFiles)
+const img = () => src(config.srcFiles)
   .pipe(sharpResponsive({
-    formats: [
-      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }},
-      { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }},
-      { width: (metadata) => metadata.width, rename: { suffix: "@2x" }},
-      { width: (metadata) => metadata.width * 0.5, format: "webp"},
-      { width: (metadata) => metadata.width, format: "jpeg"}
-    ]
-  }))
-  .pipe(dest(config.dist));
-
-  const imgPng = () => src(config.srcPngFiles)
-  .pipe(sharpResponsive({
-    formats: [
-      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }},
-      { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }},
-      { width: (metadata) => metadata.width, rename: { suffix: "@2x" }},
-      { width: (metadata) => metadata.width * 0.5, format: "webp"},
-      { width: (metadata) => metadata.width, format: "png"}
+    formats: [ 
+      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }, quality: 40},
+      { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }, quality: 50},
+      { width: (metadata) => metadata.width, rename: { suffix: "@2x" }, quality: 10},
+      { width: (metadata) => metadata.width * 0.5, format: "webp", quality: 50 },
+      { width: (metadata) => metadata.width * 0.5, quality: 60}
     ]
   }))
   .pipe(dest(config.dist));
 
 
-task('default', series(delDist, imgJpg, imgPng));
+task('default', series(delDist, img));
