@@ -17,11 +17,11 @@ const delDist = (done) => {
 const img = () => src(config.srcFiles)
   .pipe(sharpResponsive({
     formats: [ 
-      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }, quality: 40},
-      { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }, quality: 50},
-      { width: (metadata) => metadata.width, rename: { suffix: "@2x" }, quality: 10},
-      { width: (metadata) => metadata.width * 0.5, format: "webp", quality: 50 },
-      { width: (metadata) => metadata.width * 0.5, quality: 60}
+      { width: (metadata) => Math.round(metadata.width * 0.05), format: "webp", rename: { suffix: "-ph" }, webpOptions: config.webpOptions},
+      { width: (metadata) => metadata.width, format: "webp", rename: { suffix: "@2x" }, webpOptions: config.webpOptions},
+      { width: (metadata) => metadata.width, rename: { suffix: "@2x" }, pngOptions: config.pngOptions, jpegOptions: config.jpegOptions},
+      { width: (metadata) => metadata.width * 0.5, format: "webp",webpOptions: config.webpOptions},
+      { width: (metadata) => metadata.width * 0.5, pngOptions: config.pngOptions, jpegOptions: config.jpegOptions}
     ]
   }))
   .pipe(dest(config.dist));
