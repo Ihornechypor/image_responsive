@@ -1,8 +1,8 @@
 {
   "name": "image_responsive",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "gulp.js",
+  "main": "gulp.mjs",
   "scripts": {
     "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "del": "^7.0.0",
     "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-responsive": "^3.0.1"
+    "gulp-sharp-responsive": "^0.4.0"
   }
 }
