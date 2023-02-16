@@ -1,6 +1,8 @@
 import {convertToInt} from '../helpers/convertToInt.mjs'
 
 const distFolder = "dist";
+const srcFolder = "src";
+
 const webpOptions = {
     quality: 50
 }
@@ -14,6 +16,7 @@ const pngOptions = {
 
 export const config = {
     dist: distFolder,
+    src: srcFolder, 
     srcFiles: 'src/**/*.{jpg,png}',
     distDel: `${distFolder}/**/*`,
     imgArray: [

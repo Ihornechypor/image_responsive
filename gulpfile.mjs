@@ -8,23 +8,26 @@ const {
 } = gulp;
 
 import {config} from './config/config.mjs';
+import {destPath} from './helpers/destPath.mjs';
 import sharpResponsive from "gulp-sharp-responsive";
 import {deleteAsync} from 'del';
-
+import path from 'path';
 
 const delDist = (done) => {
     deleteAsync(config.distDel);
     done();
 }
 
-const img = () => src(config.srcFiles).pipe(sharpResponsive({formats: config.imgArray})).pipe(dest(config.dist));
-
+const img = () => src(config.srcFiles, {allowEmpty: true}).pipe(sharpResponsive({formats: config.imgArray})).pipe(dest(config.dist));
 
 const watcher = watch(config.srcFiles);
 
-watcher.on('add', function (path) {
-    src(path).pipe(sharpResponsive({formats: config.imgArray})).pipe(dest(config.dist))
+watcher.on('add', function (imgPath) {
+    console.log();
+    src(imgPath, {base: path.dirname(imgPath)}).pipe(sharpResponsive({formats: config.imgArray})).pipe(dest(destPath(config.dist,config.src, imgPath)))
+    console.log('create complited');
 });
+
 
 process.argv.slice(2)[0] === "build" && watcher.close();
 
