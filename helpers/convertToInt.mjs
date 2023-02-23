@@ -1,1 +1,0 @@
-export const convertToInt = (width, ratio) => Math.trunc(width * ratio) ? Math.trunc(width * ratio) : 1

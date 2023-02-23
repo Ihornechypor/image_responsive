@@ -1,5 +1,3 @@
-import {convertToInt} from '../helpers/convertToInt.mjs'
-
 const distFolder = "dist";
 const srcFolder = "src";
 
@@ -12,11 +10,13 @@ const jpegOptions = {
 }
 const pngOptions = {
     quality: 55
-} 
+}
 
-export const config = {
+const convertToInt = (width, ratio) => Math.trunc(width * ratio) ? Math.trunc(width * ratio) : 1;
+
+module.exports = {
     dist: distFolder,
-    src: srcFolder, 
+    src: srcFolder,
     srcFiles: 'src/**/*.{jpg,png}',
     distDel: `${distFolder}/**/*`,
     imgArray: [
