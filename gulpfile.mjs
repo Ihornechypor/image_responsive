@@ -23,7 +23,6 @@ const img = () => src(config.srcFiles, {allowEmpty: true}).pipe(sharpResponsive(
 const watcher = watch(config.srcFiles);
 
 watcher.on('add', function (imgPath) {
-    console.log();
     src(imgPath, {base: path.dirname(imgPath)}).pipe(sharpResponsive({formats: config.imgArray})).pipe(dest(destPath(config.dist,config.src, imgPath)))
     console.log('create complited');
 });
